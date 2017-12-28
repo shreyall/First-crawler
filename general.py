@@ -29,7 +29,7 @@ create_data_files('project', 'https://typicalmitul.com')
 ## call whenever you want to add a new link to the end of the file
 def append_to_file(path, data):
     with open(path, 'a') as file:   # a means append
-        file.write(data + \n)
+        file.write(data + '\n')
 
 # Delete the contents of the file
 def delete_file_contents(path):
