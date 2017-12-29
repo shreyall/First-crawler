@@ -7,13 +7,13 @@ def create_project_dir(directory):
 
 ####create_project_dir('project')
 
-def create_data_files(projectname, baseurl):
-    queue=projectname + '/queue.txt' 
-    crawled = projectname + '/crawled.txt'
+def create_data_files(project_name, base_url):
+    queue = project_name + '/queue.txt' 
+    crawled = project_name + '/crawled.txt'
     #if cue file exists, dont create, vice versa
     # it cannot be empty cuz it will not know where to start
     if not os.path.isfile(queue):
-        write_file(queue, baseurl)
+        write_file(queue, base_url)
     if not os.path.isfile(crawled):
         write_file(crawled, '')
 
@@ -23,7 +23,7 @@ def write_file(path, data):
     f.write(data)
     f.close()
     
-create_data_files('project', 'https://typicalmitul.com')
+## create_data_files('project', 'https://typicalmitul.com')
 
 ## add data onto an existing file
 ## call whenever you want to add a new link to the end of the file
@@ -44,11 +44,10 @@ def file_to_set(file_name):
     with open(file_name, 'rt') as f:
         for line in f:
             results.add(line.replace('\n',''))
+        return results
 
 # Iterate through each set, each item will be a new line in the file 
 def set_to_file(links, file):
     delete_file_contents(file)
     for link in sorted(links):
         append_to_file(file, link)
-
-
